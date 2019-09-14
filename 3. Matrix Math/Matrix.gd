@@ -2,16 +2,21 @@ class_name Matrix
 
 var rows := 0
 var cols := 0
-var matrix := []
+var data := []
 
 func _init(rows, cols):
 	self.rows = rows
 	self.cols = cols
 	
 	for i in range(rows):
-		matrix.append([])
+		data.append([])
 		for j in range(cols):
-			matrix[i].append(0)
+			data[i].append(0)
+
+func randomize():
+	for i in range(rows):
+		for j in range(cols):
+			data[i][j] = randi() % 30
 
 func add(m):
 	if m is int or m is float:
@@ -19,12 +24,12 @@ func add(m):
 	
 	for i in range(rows):
 		for j in range(cols):
-			matrix[i][j] += m.matrix[i][j]
+			data[i][j] += m.data[i][j]
 
-func add_scalar(n: int) -> void:
+func add_scalar(n: int):
 	for i in range(rows):
 		for j in range(cols):
-			matrix[i][j] += n
+			data[i][j] += n
 
 func dot(m):
 	if m is int or m is float:
@@ -38,24 +43,40 @@ func dot(m):
 	for i in range(result.rows):
 		for j in range(result.cols):
 			for p in range(self.cols):
-				result.matrix[i][j] += self.matrix[i][p] * m.matrix[p][j]
+				result.data[i][j] += self.data[i][p] * m.data[p][j]
 	
 	self.rows = result.rows
 	self.cols = result.cols
-	self.matrix = result.matrix
+	self.data = result.data
 
 func dot_scalar(n: int) -> void:
 	for i in range(rows):
 		for j in range(cols):
-			matrix[i][j] *= n
+			data[i][j] *= n
 
 func transpose() -> void:
 	var result = get_script().new(cols, rows)
 	
 	for i in range(rows):
 		for j in range(cols):
-			result.matrix[j][i] = matrix[i][j]
+			result.data[j][i] = data[i][j]
 	
 	self.rows = result.rows
 	self.cols = result.cols
-	self.matrix = result.matrix
+	self.data = result.data
+
+func print(digits = 2):
+	var tp = ' %' + str(digits) + 'd'
+	var res := ''
+	for i in range(rows):
+		res += '('
+		for j in range(cols):
+			res += tp % data[i][j]
+		res += ' )\n'
+	print(res)
+
+func map(fn):
+	# maps a funtion to every element
+	for i in range(rows):
+		for j in range(cols):
+			data[i][j] = fn.call_func(data[i][j])
