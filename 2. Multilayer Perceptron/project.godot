@@ -12,15 +12,21 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "Matrix",
 "language": "GDScript",
-"path": "res://Matrix.gd"
+"path": "res://Neural Network/Matrix.gd"
+}, {
+"base": "Reference",
+"class": "MatrixOperator",
+"language": "GDScript",
+"path": "res://Neural Network/MatrixOperator.gd"
 }, {
 "base": "Reference",
 "class": "NeuralNetwork",
 "language": "GDScript",
-"path": "res://NeuralNetwork.gd"
+"path": "res://Neural Network/Brain.gd"
 } ]
 _global_script_class_icons={
 "Matrix": "",
+"MatrixOperator": "",
 "NeuralNetwork": ""
 }
 

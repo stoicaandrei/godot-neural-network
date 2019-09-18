@@ -1,12 +1,34 @@
 extends Node2D
 
-var NeuralNetwork = preload("res://NeuralNetwork.gd")
-var Matrix = preload("res://Matrix.gd")
+var NeuralNetwork = preload("res://Neural Network/Brain.gd")
+
+var training_data = [
+	{
+		"inputs": [0,0],
+		"targets": [0]
+	},
+	{
+		"inputs": [0,1],
+		"targets": [1]
+	},
+	{
+		"inputs": [1,0],
+		"targets": [1]
+	},
+	{
+		"inputs": [1,1],
+		"targets": [0]
+	},
+]
 
 func _ready():
 	var neural_network = NeuralNetwork.new(2, 2, 1)
 	
-	var input = [1, 2]
-	var output = neural_network.feed_forward(input)
-	
-	print(output)
+	for i in range(10000):
+		var data = training_data[randi() % 4]
+		neural_network.train(data.inputs, data.targets)
+		
+	print(neural_network.feedforward([1,1]))
+	print(neural_network.feedforward([0,0]))
+	print(neural_network.feedforward([0,1]))
+	print(neural_network.feedforward([1,0]))

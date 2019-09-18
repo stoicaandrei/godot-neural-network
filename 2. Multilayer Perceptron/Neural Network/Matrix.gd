@@ -34,7 +34,7 @@ func randomize():
 	randomize() # randomize the seed
 	for i in range(rows):
 		for j in range(cols):
-			data[i][j] = randi() % 2 - 1
+			data[i][j] = randi() % 3 - 1
 
 func add(m):
 	if m is int or m is float:
@@ -44,42 +44,23 @@ func add(m):
 		for j in range(cols):
 			data[i][j] += m.data[i][j]
 
-func add_scalar(n: int):
+func add_scalar(n):
 	for i in range(rows):
 		for j in range(cols):
 			data[i][j] += n
 
-func dot(m):
+func multiply(m):
 	if m is int or m is float:
-		return dot_scalar(m)
-	
-	if self.cols != m.rows:
-		printerr('incompatible')
-		return
-	
-	var result = get_script().new(self.rows, m.cols)
-	for i in range(result.rows):
-		for j in range(result.cols):
-			for p in range(self.cols):
-				result.data[i][j] += self.data[i][p] * m.data[p][j]
-	
-	return result
+		return multiply_scalar(m)
+		
+	for i in range(rows):
+		for j in range(cols):
+			data[i][j] *= m.data[i][j]
 
-func dot_scalar(n: int) -> void:
+func multiply_scalar(n) -> void:
 	for i in range(rows):
 		for j in range(cols):
 			data[i][j] *= n
-
-func transpose() -> void:
-	var result = get_script().new(cols, rows)
-	
-	for i in range(rows):
-		for j in range(cols):
-			result.data[j][i] = data[i][j]
-	
-	self.rows = result.rows
-	self.cols = result.cols
-	self.data = result.data
 
 func print(digits = 2):
 	var tp = ' %' + str(digits) + 'd'
@@ -100,5 +81,6 @@ func map(fn: FuncRef):
 func to_array() -> Array:
 	var res = []
 	for i in range(rows):
-		res.append(data[i][0])
+		for j in range(cols):
+			res.append(data[i][j])
 	return res
