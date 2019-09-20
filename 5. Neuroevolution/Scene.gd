@@ -7,6 +7,7 @@ func _ready():
 	var a = NeuralNetwork.new(3, 2, 1)
 	var b = a.duplicate()
 	
-	a.train([0,0,0], [1])
+	a.mutation_rate = .5
+	a.mutate()
 	
 	print(a.bias_o.data, b.bias_o.data)

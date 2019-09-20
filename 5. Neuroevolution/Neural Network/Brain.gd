@@ -12,14 +12,18 @@ var weights_ho: Matrix # hidden -> output
 var bias_h: Matrix
 var bias_o: Matrix
 
-export (float) var learning_rate = 1
+var learning_rate = 1
+var mutation_rate = 0.01
 
 var sigmoid_ref: FuncRef
 var dsigmoid_ref: FuncRef
+var mutation_func_ref: FuncRef
 
 func _init(a, b = 1, c = 1):
+	randomize()
 	sigmoid_ref = funcref(self, 'sigmoid')
 	dsigmoid_ref = funcref(self, "dsigmoid")
+	mutation_func_ref = funcref(self, "mutation_func")
 	
 	if a is int:
 		construct_from_sizes(a, b, c)
@@ -103,8 +107,20 @@ func train(input_array, target_array):
 	weights_ih.add(weight_ih_deltas)
 	bias_h.add(hidden_gradients)
 
+func mutate():
+	weights_ih.map(mutation_func_ref)
+	weights_ho.map(mutation_func_ref)
+	bias_h.map(mutation_func_ref)
+	bias_o.map(mutation_func_ref)
+
 func duplicate():
 	return get_script().new(self)
+
+func mutation_func(val):
+	if randf() < mutation_rate:
+		return randi() % 3 - 1
+	else:
+		return val
 
 func sigmoid(x):
 	return 1 / (1 + exp(-x))
