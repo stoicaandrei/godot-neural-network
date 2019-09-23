@@ -14,4 +14,13 @@ This is the barebone library of matrix operations. It contains a `Matrix class` 
 
 # 4. Color predictor
 This is a program that predicts weather a color should be white or black, given the background color.
-<img src="2.%20Color%20Predictor/preview.gif" width="200" height="200" />
+
+<img src="4.%20Color%20Predictor/preview.gif" width="200" height="200" />
+
+# 5. Neuroevolution
+In this project I added more functionalities to the neural network, respectively mutate and duplicate
+
+# 6. Flappy godot
+In this project I implemented a flappy bird clone, and trained the neuroevolution algorithm to learn how to play
+
+<img src="6.%20Flappy%20Godot/preview.gif" width="200" height="200" />
