@@ -1,5 +1,29 @@
 **Godot** is an open source game engine. In this repository I made an artificial intelligence library and implemented some use cases.
 
+For simple case AI use
+```
+var NeuralNetwork = preload("./Neural Network/Brain.gd")
+var neural_network = NeuralNetwork.new(input_nodes: int, 
+                                       hidden_nodes: int, 
+                                       output_nodes: int)
+
+neural_network.predict(inputs: Array)
+neural_network.train(inptuts: Array, targets: Array)
+```
+
+For neuroevolution algoritms us
+```
+var NeuralNetwork = preload("./Neural Network/Brain.gd")
+var neural_network = NeuralNetwork.new(input_nodes: int, 
+                                       hidden_nodes: int, 
+                                       output_nodes: int)
+
+neural_network.predict(inputs: Array)
+neural_network.duplicate()
+neural_network.mutation_rate = mutation_rate
+neural_network.mutate()
+```
+
 # 1. Simple perceptron
 Here I implemented a simple perceptron, that has the role of doing linear separation of points based on a given function `y=mx+b`.
 
