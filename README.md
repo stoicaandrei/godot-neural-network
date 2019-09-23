@@ -2,3 +2,4 @@
 
 # 1. Simple perceptron
 ![Linear separator preview](1.%20Perceptron/preview.gif){:height="250px" width="250px"}
+<img src="1.%20Perceptron/preview.gif" />
