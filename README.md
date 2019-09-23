@@ -24,3 +24,5 @@ In this project I added more functionalities to the neural network, respectively
 In this project I implemented a flappy bird clone, and trained the neuroevolution algorithm to learn how to play
 
 <img src="6.%20Flappy%20Godot/preview.gif" width="200" height="200" />
+
+This project was inspired by [Daniel Shiffman](https://www.youtube.com/user/shiffman/playlists)
