@@ -1,6 +1,7 @@
 class_name MatrixOperator
+# class with static function for matrices
 
-var Matrix = preload("res://Neural Network/Matrix.gd")
+var Matrix = preload("./Matrix.gd")
 
 static func subtract(a: Matrix, b: Matrix) -> Matrix:
 	var result = Matrix.new(a.rows, a.cols)

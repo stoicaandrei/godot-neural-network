@@ -28,7 +28,7 @@ func _ready():
 		var data = training_data[randi() % 4]
 		neural_network.train(data.inputs, data.targets)
 		
-	print(neural_network.feedforward([1,1]))
-	print(neural_network.feedforward([0,0]))
-	print(neural_network.feedforward([0,1]))
-	print(neural_network.feedforward([1,0]))
+	print(neural_network.predict([1,1]))
+	print(neural_network.predict([0,0]))
+	print(neural_network.predict([0,1]))
+	print(neural_network.predict([1,0]))

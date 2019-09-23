@@ -1,6 +1,6 @@
 extends Node2D
 
-const TOTAL = 100
+const TOTAL = 50
 
 onready var obstable_spawner = $"Obstacle spawner"
 onready var player_spawner = $"Player spawner"

@@ -12,18 +12,29 @@ var weights_ho: Matrix # hidden -> output
 var bias_h: Matrix
 var bias_o: Matrix
 
-export (float) var learning_rate = 1
+var learning_rate = 1
+var mutation_rate = 0.1
 
 var sigmoid_ref: FuncRef
 var dsigmoid_ref: FuncRef
+var mutation_func_ref: FuncRef
 
-func _init(input_nodes_, hidden_nodes_, output_nodes_):
+# CONSTRUCTORS
+func _init(a, b = 1, c = 1):
+	randomize()
 	sigmoid_ref = funcref(self, 'sigmoid')
 	dsigmoid_ref = funcref(self, "dsigmoid")
+	mutation_func_ref = funcref(self, "mutation_func")
 	
-	input_nodes = input_nodes_
-	hidden_nodes = hidden_nodes_
-	output_nodes = output_nodes_
+	if a is int:
+		construct_from_sizes(a, b, c)
+	else:
+		construct_from_nn(a)
+
+func construct_from_sizes(a, b, c):
+	input_nodes = a
+	hidden_nodes = b
+	output_nodes = c
 	
 	weights_ih = Matrix.new(hidden_nodes, input_nodes)
 	weights_ho = Matrix.new(output_nodes, hidden_nodes)
@@ -35,7 +46,18 @@ func _init(input_nodes_, hidden_nodes_, output_nodes_):
 	bias_h.randomize()
 	bias_o.randomize()
 
-func predict(input_array: Array):
+func construct_from_nn(a):
+	input_nodes = a.input_nodes
+	hidden_nodes = a.hidden_nodes
+	output_nodes = a.output_nodes
+	
+	weights_ih = a.weights_ih.duplicate()
+	weights_ho = a.weights_ho.duplicate()
+	
+	bias_h = a.bias_h.duplicate()
+	bias_o = a.bias_o.duplicate()
+
+func predict(input_array: Array) -> Array:
 	var inputs = Matrix.new(input_array)
 	
 	var hidden = MatrixOperator.multiply(weights_ih, inputs)
@@ -85,7 +107,6 @@ func train(input_array, target_array):
 	
 	weights_ih.add(weight_ih_deltas)
 	bias_h.add(hidden_gradients)
-
 
 func sigmoid(x):
 	return 1 / (1 + exp(-x))

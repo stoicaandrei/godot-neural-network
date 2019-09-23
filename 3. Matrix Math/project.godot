@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Matrix",
 "language": "GDScript",
 "path": "res://Matrix.gd"
+}, {
+"base": "Reference",
+"class": "MatrixOperator",
+"language": "GDScript",
+"path": "res://MatrixOperator.gd"
 } ]
 _global_script_class_icons={
-"Matrix": ""
+"Matrix": "",
+"MatrixOperator": ""
 }
 
 [application]

@@ -1,4 +1,5 @@
 class_name MatrixOperator
+# class with static function for matrices
 
 var Matrix = preload("./Matrix.gd")
 

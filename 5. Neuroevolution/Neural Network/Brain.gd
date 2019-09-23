@@ -13,12 +13,13 @@ var bias_h: Matrix
 var bias_o: Matrix
 
 var learning_rate = 1
-var mutation_rate = 0.01
+var mutation_rate = 0.1
 
 var sigmoid_ref: FuncRef
 var dsigmoid_ref: FuncRef
 var mutation_func_ref: FuncRef
 
+# CONSTRUCTORS
 func _init(a, b = 1, c = 1):
 	randomize()
 	sigmoid_ref = funcref(self, 'sigmoid')
@@ -56,7 +57,7 @@ func construct_from_nn(a):
 	bias_h = a.bias_h.duplicate()
 	bias_o = a.bias_o.duplicate()
 
-func predict(input_array: Array):
+func predict(input_array: Array) -> Array:
 	var inputs = Matrix.new(input_array)
 	
 	var hidden = MatrixOperator.multiply(weights_ih, inputs)
@@ -118,7 +119,7 @@ func duplicate():
 
 func mutation_func(val):
 	if randf() < mutation_rate:
-		return randi() % 3 - 1
+		return val + rand_range(-0.1, 0.1)
 	else:
 		return val
 
