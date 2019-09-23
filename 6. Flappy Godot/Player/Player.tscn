@@ -7,10 +7,16 @@
 extents = Vector2( 31.6528, 31.9545 )
 
 [node name="Player" type="KinematicBody2D"]
+position = Vector2( 85, 300 )
+collision_mask = 0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.392157 )
 texture = ExtResource( 2 )
