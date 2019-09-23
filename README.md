@@ -2,6 +2,7 @@
 
 # 1. Simple perceptron
 Here I implemented a simple perceptron, that has the role of doing linear separation of points based on a given function `y=mx+b`.
+
 <img src="1.%20Perceptron/preview.gif" width="200" height="200" />
 
 # 2. Multilayer perceptron
