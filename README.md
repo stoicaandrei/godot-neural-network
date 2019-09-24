@@ -13,7 +13,7 @@ neural_network.predict(inputs: Array)
 neural_network.train(inptuts: Array, targets: Array)
 ```
 
-For neuroevolution algoritms us
+For neuroevolution algorithms use
 ```
 var NeuralNetwork = preload("./Neural Network/Brain.gd")
 var neural_network = NeuralNetwork.new(input_nodes: int, 
