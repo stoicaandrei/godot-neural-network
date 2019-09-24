@@ -1,4 +1,4 @@
-**Godot** is an open source game engine. In this repository I made an artificial intelligence library and implemented some use cases.
+In this repository I made an artificial intelligence library and implemented some use cases.
 
 Just copy the folder from `lib` and you're good to go.
 
