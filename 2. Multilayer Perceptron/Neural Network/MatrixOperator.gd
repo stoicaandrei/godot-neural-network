@@ -1,7 +1,7 @@
 class_name MatrixOperator
 # class with static function for matrices
 
-var Matrix = preload("./Matrix.gd")
+const Matrix = preload("./Matrix.gd")
 
 static func subtract(a: Matrix, b: Matrix) -> Matrix:
 	var result = Matrix.new(a.rows, a.cols)
